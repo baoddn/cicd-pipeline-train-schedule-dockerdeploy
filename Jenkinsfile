@@ -16,12 +16,12 @@ pipeline {
                 script {
                     app = docker.build("baoddn/train-schedule")
                     app.inside {
-                        sh 'echo ${curl localhost:8080}'
+                        sh 'echo $(curl localhost:8080)'
                     }
                 }
             }
         }
-        stage('Puhs Docker Image') {
+        stage('Push Docker Image') {
             when {
                 branch 'master'
             }
